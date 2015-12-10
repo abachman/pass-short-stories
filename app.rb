@@ -2,16 +2,10 @@ require 'sinatra'
 require 'rack/throttle'
 require 'marky_markov'
 
-use Rack::Throttle::Interval
+## Uncomment if you need to throttle traffic. Default to 1 second minimum timeout.
+# use Rack::Throttle::Interval, min: 1.0
 
-# def filtered(text_file)
-#   text_file.read.split.map(&:strip).select {|w| /\b[a-zA-Z]+\b/ =~ w}
-# end
-#
-# WORDS = filtered('13888-8.txt') +
-#         filtered('50650-0.txt') +
-#         filtered('50651-8.txt').join(' ')
-
+# run `rake regenerate` if you make changes to the source texts.
 $markov = MarkyMarkov::Dictionary.new('dictionary')
 
 Struct.new('Story', :title, :paragraphs)
@@ -24,7 +18,13 @@ def generate_story
     $markov.generate_n_sentences(3),
   ]
 
-  t = t.gsub(/_/, '').split(' ').map {|w| w[0].upcase + w[1..-1]}.join(' ')
+  # clean up text
+  t = t.gsub(/_/, '').split(' ').map {|w|
+    # title-case each word
+    w[0].upcase + w[1..-1]
+  }.join(' ')
+
+  # clean up text and start with uppercase letter for each paragraph
   ps = ps.map {|p|
     p = p.gsub(/[_'"\[\]]/, '')
     p[0].upcase + p[1..-1]
@@ -36,9 +36,6 @@ end
 get('/') do
   sleep 1
   redirect '/story'
-end
-
-get('/phrase') do
 end
 
 get('/story') do
