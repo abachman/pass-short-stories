@@ -55,6 +55,7 @@ get('/story') do
       <h1>#{ story.title }</h1>
       #{ story.paragraphs.map {|p| "<p>#{ p }</p>"}.join("\n") }
       <a href='/story' style='display:block;text-align:center;margin-top:32px;font-weight:bold;'>AGAIN</a></center>
+      <a href='https://github.com/abachman/pass-short-stories' style='display:block;text-align:center;margin-top:32px;font-weight:bold;'>https://github.com/abachman/pass-short-stories</a></center>
     </div>
   </body>
   ]
