@@ -38,6 +38,10 @@ get('/') do
   redirect '/story'
 end
 
+get('/phrases') do
+  # generate more secure passphrases here...
+end
+
 get('/story') do
   story = generate_story
 
