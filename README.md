@@ -7,5 +7,7 @@ of passphrases glommed together and more interesting and probably easier
 to remember. They're certainly less secure than good old fashioned
 passphrases, though.
 
+Example should be running at: http://pass-short-stories.herokuapp.com/story
+
 Deploy your own on Heroku and then hack on it, if you want to:
 [![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy)
