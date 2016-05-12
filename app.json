@@ -1,0 +1,30 @@
+{
+  "name": "Pass Short Stories",
+  "description": "Generate human thinkable passphrases, just for fun.",
+  "keywords": [
+    "entertainment"
+  ],
+  "website": "http://pass-short-stories.herokuapp.com",
+  "repository": "https://github.com/abachman/pass-short-stories",
+  "success_url": "/story",
+  "scripts": { },
+  "env": {
+    "RACK_ENV": {
+      "value": "production"
+    }
+  },
+  "formation": {
+    "web": {
+      "quantity": 1,
+      "size": "free"
+    }
+  },
+  "image": "heroku/ruby",
+  "addons": [ ],
+  "buildpacks": [
+    {
+      "url": "https://github.com/heroku/heroku-buildpack-ruby"
+    }
+  ]
+}
+
